@@ -1,0 +1,27 @@
+/* Global Reset */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:root {
+  /* Variables */
+  --blue: 195, 100%, 49%;
+  --green: 172, 100%, 48%;
+  --yellow: 52, 99%, 62%;
+  --pink: 324, 84%, 65%;
+  --purple: 267, 72%, 63%;
+  --white: #fff;
+  --black: #000;
+  --text: #333;
+}
+
+html,
+body {
+  padding: 0;
+  min-height: 100vh;
+  font-size: 1.125rem;
+  font-family: "Ubuntu", sans-serif;
+}
