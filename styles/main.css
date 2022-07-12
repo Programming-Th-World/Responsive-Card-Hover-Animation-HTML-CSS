@@ -25,3 +25,152 @@ body {
   font-size: 1.125rem;
   font-family: "Ubuntu", sans-serif;
 }
+
+/* Body */
+body {
+  display: grid;
+  place-items: center;
+
+  background-image: linear-gradient(
+    to top right,
+    hsla(var(--blue), 0.2),
+    hsla(var(--yellow), 0.2),
+    hsla(var(--green), 0.2)
+  );
+}
+
+/* List */
+.list {
+  list-style: none;
+  padding: 30px;
+
+  width: min(900px, 98%);
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+/* Card */
+.card {
+  --bg: hsl(var(--blue));
+
+  flex: 1 0 250px;
+  background-color: var(--white);
+  color: var(--text);
+
+  padding: 100px 20px 50px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  transition: all 250ms linear;
+}
+
+.card:nth-child(2n) {
+  --bg: hsl(var(--purple));
+}
+
+.card:nth-child(3n) {
+  --bg: hsl(var(--pink));
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background-color: var(--bg);
+
+  clip-path: circle(35% at top right);
+
+  transition: clip-path 500ms linear;
+}
+
+.card:hover {
+  color: var(--white);
+}
+
+.card:hover::before {
+  clip-path: circle(100%);
+}
+
+/* Card: Title */
+.card__title {
+  text-transform: uppercase;
+  transition: inherit;
+}
+
+/* Card: Content */
+.card__content {
+  font-size: 0.95rem;
+  transition: inherit;
+}
+
+/* Card: Button */
+.card__btn {
+  appearance: none;
+  outline: none;
+  border: 1px solid currentColor;
+  cursor: pointer;
+
+  color: var(--black);
+  background-color: var(--white);
+
+  font-size: 1rem;
+  padding: 0.5em 1em;
+  border-radius: 100vmax;
+
+  align-self: center;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  transition: color 300ms linear 200ms;
+}
+
+.card__btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background-color: var(--bg);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 300ms linear 200ms;
+}
+
+.card:hover > .card__btn {
+  color: var(--white);
+}
+
+.card:hover > .card__btn::before {
+  transform-origin: top;
+  transform: scaleY(1);
+}
+
+/* Card: Count */
+.card__count {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  margin: 15px 20px;
+
+  font-size: 3rem;
+  font-weight: bold;
+
+  color: var(--white);
+}
